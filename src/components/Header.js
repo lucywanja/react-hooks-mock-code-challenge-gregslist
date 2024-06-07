@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "./Search";
 
-function Header({ searchInput, setSearchInput }) {
+function Header({ searchInput, setSearchInput, handleSearch }) {
   return (
     <header>
       <h1>
@@ -13,6 +13,7 @@ function Header({ searchInput, setSearchInput }) {
       <Search
       searchInput={searchInput}
       setSearchInput={setSearchInput} 
+      handleSearch={handleSearch}
       />
     </header>
   );

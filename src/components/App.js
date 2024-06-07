@@ -8,7 +8,9 @@ function App() {
 
   const[listings, setListings] = useState([]);
 
-  const [searchInput, setSearchInput] = useState("")
+  const [searchInput, setSearchInput] = useState("");
+
+  const[searchQuery, setSearchQuery] = useState("");
 
 
 // add the useEffect hook fetches the list from the backend when the component mounts
@@ -22,14 +24,20 @@ function App() {
   const searchResults = listings.filter((listing) => {
     if(searchInput === "") return true;
 
-    return listing.description.toLowerCase().includes(searchInput.toLowerCase())
+    return listing.description.toLowerCase().includes(searchQuery.toLowerCase())
   })
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchQuery(searchInput);
+  };
 
   return (
     <div className="app">
       <Header 
       searchInput={searchInput}
       setSearchInput={setSearchInput}
+      handleSearch={handleSearch}
       />
       <ListingsContainer 
       searchResults={searchResults}
